@@ -5,7 +5,7 @@ export default function ModuleRoutes(app) {
         const module = req.body;
         const moduleIndex = db.modules.findIndex((m) => m._id === mid);
         if(moduleIndex === -1) {
-            res.status(404).json({ message: `Unable to delete module with ID ${mid}`});
+            res.status(404).json({ message: `Unable to edit module with ID ${mid}`});
             return;
         }
         db.modules[moduleIndex] = { ...db.modules[moduleIndex], ...module};
