@@ -13,6 +13,10 @@ const quizQuestionSchema = new mongoose.Schema({
         default: [],
     },
     correctAnswer: Number,
+    correctWrittenAnswers: {
+        type: [String],
+        default: [],
+    },
 });
 const quizSchema = new mongoose.Schema({
     name: { type: String, required: true },
