@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
 const quizQuestionSchema = new mongoose.Schema({
+    title: String,
     question: String,
-    description: String,
     points: Number,
     answerType: {
         type: String,
-        enum: ["MULTIPLE_CHOICE", "OPEN_ENDED", "TRUE_FALSE"],
-        default: "OPEN_ENDED",
+        enum: ["Multiple Choice", "True/False", "Fill In the Blank"],
+        default: "Multiple Choice",
     },
     answerOptions: {
         type: [String],
         default: [],
     },
-    correctAnswer: String
+    correctAnswer: Number,
 });
 const quizSchema = new mongoose.Schema({
     name: { type: String, required: true },
