@@ -38,7 +38,7 @@ export default function UserRoutes(app) {
 	const updateUser = async (req, res) => {
 		const { userId } = req.params;
 		const user = await dao.findUserByUsername(req.body.username.toLowerCase());
-		if (user) {
+		if (user && String(user._id) !== String(userId)) {
 			res.status(400).json({ message: "Username already taken" });
 			return;
 		}
