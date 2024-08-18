@@ -21,6 +21,7 @@ const quizQuestionSchema = new mongoose.Schema({
 const quizSchema = new mongoose.Schema({
     name: { type: String, required: true },
     course: { type: String, required: true },
+    description: String,
     questions: [quizQuestionSchema],
     availableDate: Date,
     untilDate: Date,
