@@ -1,4 +1,20 @@
 import mongoose from "mongoose";
+const submissionAnswerSchema = new mongoose.Schema({
+    question: String,
+    answerType: {
+        type: String,
+        enum: ["Multiple Choice", "True/False", "Fill In the Blank"],
+        default: "Multiple Choice",
+    },
+    numberAnswer: {
+        type: Number,
+        default: undefined
+    },
+    writtenAnswer: {
+        type: String,
+        default: undefined,
+    },
+});
 const quizQuestionSchema = new mongoose.Schema({
     title: String,
     question: String,
@@ -18,11 +34,16 @@ const quizQuestionSchema = new mongoose.Schema({
         default: [],
     },
 });
+const quizSubmissionSchema = new mongoose.Schema({
+    user: String,
+    answers: [submissionAnswerSchema],
+});
 const quizSchema = new mongoose.Schema({
     name: { type: String, required: true },
     course: { type: String, required: true },
     description: String,
     questions: [quizQuestionSchema],
+    submissions: [quizSubmissionSchema],
     availableDate: Date,
     untilDate: Date,
     dueDate: Date,
